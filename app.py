@@ -5,9 +5,12 @@ import matplotlib.pyplot as plt
 from dotenv import load_dotenv
 import os
 
-# Load API Key dari Streamlit Secrets
-api_key = st.secrets["OPENAI_API_KEY"]
-
+# Periksa apakah API Key tersedia
+if "OPENAI_API_KEY" in st.secrets:
+    api_key = st.secrets["OPENAI_API_KEY"]
+else:
+    st.error("⚠️ API Key tidak ditemukan. Tambahkan di Streamlit Secrets!")
+    st.stop()
 
 client = OpenAI(api_key=api_key)
 
