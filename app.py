@@ -5,11 +5,10 @@ import matplotlib.pyplot as plt
 from dotenv import load_dotenv
 import os
 
-# Load environment variables
-load_dotenv()
+# Load API Key dari Streamlit Secrets
+api_key = st.secrets["OPENAI_API_KEY"]
 
-# Konfigurasi API OpenAI
-api_key = os.getenv("OPENAI_API_KEY")
+
 client = OpenAI(api_key=api_key)
 
 def analyze_response(response_text):
